@@ -1,0 +1,5 @@
+---
+- name: "Shutdown: {{ name }}"
+  include_tasks: shutdown.yml
+
+- include_tasks: boot.yml

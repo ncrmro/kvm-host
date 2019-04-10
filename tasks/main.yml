@@ -1,5 +1,3 @@
 ---
-- include_tasks: kvm-host/dependencies.yml
-# - include_tasks: permissions.yml
-# - include_tasks: kvm_search_domains.yml
-# - include_tasks: update_virt_default_network.yml
+- include_tasks: kvm-host/main.yml
+- include_tasks: kvm-guest/main.yml
