@@ -4,7 +4,7 @@
   register: vms
 
 - name: get VM disks
-  command: ls "{{ kvm_vm_location }}"
+  command: ls "{{ kvm_vm_folder_path }}"
   register: disks
   changed_when: "disks.rc != 0"
 
