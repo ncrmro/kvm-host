@@ -1,7 +1,8 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+A project to set up a KVM baremetal hypervisor, 
+create a secure base guest for easy cloning and clone that image into other predefined vms.
 
 Requirements
 ------------
