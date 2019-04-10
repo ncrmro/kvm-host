@@ -1,3 +1,4 @@
+---
 - name: Ensure group KVM groups exists
   group:
     name: "{{item}}"

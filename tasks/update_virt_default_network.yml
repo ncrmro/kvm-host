@@ -1,5 +1,6 @@
 ---
-# TODO make this create a new network instead of deleting the old one to add .kvm search domain
+# TODO make this create a new network instead of deleting
+# the old one to add .kvm search domain
 - name: Check current Networks
   virt_net:
     command: list_nets
@@ -32,7 +33,7 @@
 - name: Autostart networks
   virt_net:
     state: active
-    autostart: yes
+    autostart: true
     name: "{{ item.name }}"
   with_items: "{{ libvirt_bridges }}"
   when: item.name not in nets.list_nets

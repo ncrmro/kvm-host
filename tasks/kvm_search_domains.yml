@@ -16,6 +16,6 @@
 - name: restart systemd-resolved
   systemd:
     state: restarted
-    daemon_reload: yes
+    daemon_reload: true
     name: systemd-resolved
   when: nameserver_result.changed
