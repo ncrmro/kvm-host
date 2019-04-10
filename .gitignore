@@ -1,1 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
+/ubuntu-bionic-18.04-cloudimg-console.log
+
+### Vagrant template
+# General
+.vagrant/
