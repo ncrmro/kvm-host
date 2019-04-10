@@ -19,7 +19,7 @@
 
 - name: Creates VM directory
   file:
-    path: "{{kvm_vm_location}}"
+    path: "{{ kvm_vm_location }}"
     state: directory
     owner: libvirt-qemu
     group: libvirt-qemu

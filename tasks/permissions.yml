@@ -1,7 +1,7 @@
 ---
 - name: Ensure group KVM groups exists
   group:
-    name: "{{item}}"
+    name: "{{ item }}"
     state: present
   with_items:
     - libvirt
@@ -11,7 +11,7 @@
   user: name="{{ item.name }}"
     group="{{ item.name }}"
     shell=/bin/bash
-    password="{{admin_password}}"
+    password="{{ admin_password }}"
     groups=libvirt
     append=yes
   when: '"libvirt" in item.groups'
@@ -21,7 +21,7 @@
   user: name="{{ item.name }}"
     group="{{ item.name }}"
     shell=/bin/bash
-    password="{{admin_password}}"
+    password="{{ admin_password }}"
     groups=libvirt-qemu
     append=yes
   when: '"libvirt-qemu" in item.groups'

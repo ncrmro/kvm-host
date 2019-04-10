@@ -4,3 +4,7 @@ repos:
     sha: v1.15.0
     hooks:
       - id: yamllint
+  - repo: git@github.com:ansible/ansible-lint.git
+    sha: v4.1.0
+    hooks:
+      - id: ansible-lint
