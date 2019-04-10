@@ -14,12 +14,11 @@
       - qemu-kvm
       - libvirt-daemon-system
       - libvirt-clients
-      - virtinst
-      - libguestfs-tools
+      - bridge-utils
 
 - name: Creates VM directory
   file:
-    path: "{{ kvm_vm_location }}"
+    path: "{{ kvm_vm_folder_path }}"
     state: directory
     owner: libvirt-qemu
     group: libvirt-qemu

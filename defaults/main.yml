@@ -1,3 +1,0 @@
----
-- include_vars: kvm-host.yml
-- include_vars: kvm-guest.yml

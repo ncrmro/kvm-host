@@ -4,3 +4,4 @@
 ### Vagrant template
 # General
 .vagrant/
+*.retry

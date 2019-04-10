@@ -1,5 +1,11 @@
 ---
-- hosts: localhost
+- hosts: all
   remote_user: root
+  become: yes
   roles:
-    - kvm-host
+    - ../../.
+  tasks:
+    - name: Check is virsh installed
+      shell: virsh -h
+      register: is_virsh_exist
+      ignore_errors: false
