@@ -4,12 +4,12 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-
-[packages]
-ansible = "*"
 yamllint = "*"
 ansible-lint = "*"
 pre-commit = "*"
+
+[packages]
+ansible = "*"
 
 [requires]
 python_version = "3.7"
