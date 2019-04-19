@@ -8,8 +8,14 @@
     guest: "{{ item }}"
   with_items: "{{ kvm_base_guests }}"
 
+- name: List VMs
+  virt: command=list_vms
+  register: vms
+
 - name: Create guests
   include_tasks: guests.yml
   vars:
     guest: "{{ item }}"
   with_items: "{{ kvm_guests }}"
+  when:
+    - item.name not in vms.list_vms
