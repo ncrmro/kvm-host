@@ -23,33 +23,9 @@
     name: "{{ guest.name }}"
   when: guest.name not in vms.list_vms
 
-- name: "Wait 15 secods for {{ guest.name }} to be reachable at {{ guest.base_guest.domain }}"
-  wait_for:
-    host: "{{ guest.base_guest.domain }}"
-    port: 22
-    search_regex: OpenSSH
-    timeout: 30
-  when: guest.name not in vms.list_vms
-
 - name: "Update cloned guests: {{ guest.name }} hostname"
   include_tasks: util/changehostname.yml
   when: guest.name not in vms.list_vms
-
-- name: Wait for async change hostname..
-  pause: seconds=45
-  when: guest.name not in vms.list_vms
-
-- import_tasks: util/reboot.yml
-  vars:
-    name: "{{ guest.name }}"
-  when: guest.name not in vms.list_vms
-
-- name: "Wait 30 secods for {{ guest.name }} to be reachable at {{ guest.domain }}"
-  wait_for:
-    host: "{{ guest.domain }}"
-    port: 22
-    search_regex: OpenSSH
-    timeout: 30
 
 #- name: Resize disk
 #  include_tasks: util/resize_disk.yml
