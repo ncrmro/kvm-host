@@ -1,6 +1,6 @@
 - include_tasks: shutdown.yml
 
-- name: "Snapshot guest vm {{ name }} to shutdown"
+- name: "Snapshot guest vm {{ name }} with snapshot name {{ snapshot_name | default( ansible_date_time.date ) }}"
   command: >
     virsh snapshot-create-as
     --domain {{ name }}
