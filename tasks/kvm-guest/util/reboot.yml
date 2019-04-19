@@ -1,5 +1,6 @@
 ---
-- name: "Shutdown: {{ name }}"
+- name: "Beginning Reboot, Shutdown: {{ name }}"
   include_tasks: shutdown.yml
 
-- include_tasks: boot.yml
+- name: "Starting: {{ name }}"
+  include_tasks: boot.yml
