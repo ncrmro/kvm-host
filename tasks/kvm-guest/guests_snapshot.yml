@@ -1,4 +1,4 @@
-- import_tasks: util/snapshot.yml
+- include_tasks: util/snapshot.yml
   vars:
     name: "{{ guest.name }}"
   with_items: "{{ kvm_guests }}"
