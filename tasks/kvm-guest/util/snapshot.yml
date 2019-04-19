@@ -4,6 +4,6 @@
   command: >
     virsh snapshot-create
     --domain {{ name }}
-    --name {{ ansible_date_time.date }}
+    --name {{ snapshot_name | default( ansible_date_time.date ) }}
 
 - include_tasks: boot.yml

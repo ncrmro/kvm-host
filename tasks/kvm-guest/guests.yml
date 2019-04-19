@@ -32,3 +32,8 @@
 #  vars:
 #    #original_size:
 #    expanded_size: 40GB
+
+- import_tasts: util/snapshot.yml
+  vars:
+    name: "{{ guest.name }}"
+    snapshot_name: "initial-snapshot"
