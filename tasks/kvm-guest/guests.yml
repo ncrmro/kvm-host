@@ -37,3 +37,4 @@
   vars:
     name: "{{ guest.name }}"
     snapshot_name: "initial-snapshot"
+  when: guest.name not in vms.list_vms
