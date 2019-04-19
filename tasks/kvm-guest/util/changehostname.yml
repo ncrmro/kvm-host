@@ -39,7 +39,9 @@
 
 ### End Key Hostname
 
-- include_tasks: reboot.yml
+- import_tasks: reboot.yml
+  vars:
+    name: "{{ guest.name }}"
 
 - name: "Waiting 30 seconds for {{ guest.name }} to be reachable at {{ guest.domain }}"
   wait_for:
