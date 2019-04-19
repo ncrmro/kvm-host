@@ -2,7 +2,7 @@
 
 - name: "Snapshot guest vm {{ name }} to shutdown"
   command: >
-    virsh snapshot-create
+    virsh snapshot-create-as
     --domain {{ name }}
     --name {{ snapshot_name | default( ansible_date_time.date ) }}
 
