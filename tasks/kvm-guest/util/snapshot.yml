@@ -1,7 +1,7 @@
 - include_tasks: shutdown.yml
 
 - set_fact:
-     snapshot_name: "automated-snapshot_{{ snapshot_name | default( ansible_date_time.date ) }}"
+     snapshot_name: "automated-snapshot_{{ snapshot_name | lookup('pipe','date +%Y-%m-%d-%H-%M-%S' ) }}"
 
 - name: "Snapshot guest vm {{ name }} with snapshot name {{ snapshot_name }}"
   command: >
