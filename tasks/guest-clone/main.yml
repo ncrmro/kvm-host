@@ -1,12 +1,6 @@
 ---
 - name: KVM Guest - Gathering Facts..
-  import_tasks: 00-facts.yaml
-
-- debug:
-    msg: "{{vms.list_vms}}"
-
-- debug:
-    msg: "{{ groups['kvm-clones'] }}"
+  import_tasks: 00-facts.yml
 
 - name: KVM Guest - Clone
   include_tasks: clone.yml
