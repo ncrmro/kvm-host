@@ -1,6 +1,12 @@
 ---
 - name: KVM Guest - Gathering Facts..
-  import_tasks: ../guest-util/00-facts.yml
+  import_tasks: 00-facts.yaml
+
+- debug:
+    msg: "{{vms.list_vms}}"
+
+- debug:
+    msg: "{{ groups['kvm-clones'] }}"
 
 - name: KVM Guest - Clone
   include_tasks: clone.yml
@@ -8,4 +14,4 @@
     guest: "{{ item }}"
   with_items: "{{ groups['kvm-clones'] }}"
   when:
-    - item.name not in vms.list_vms
+    - item not in vms.list_vms
