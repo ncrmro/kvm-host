@@ -1,0 +1,5 @@
+# Check if guests exists and are reachable
+
+- name: List VMs
+  virt: command=list_vms
+  register: vms
