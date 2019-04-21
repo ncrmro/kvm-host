@@ -1,5 +1,4 @@
 ---
-
 - name: "Wait 15 secods for {{ guest.name }} to be reachable at {{ guest.base_guest.domain }}"
   wait_for:
     host: "{{ guest.base_guest.domain }}"
@@ -17,7 +16,7 @@
   lineinfile:
     dest: /etc/hosts
     regexp: '127\.0\.1\.1[ \t]+\S+[ \t]+\S+'
-    line: '127.0.1.1       {{ guest.domain }}        {{ guest.hostname }}'
+    line: "127.0.1.1       {{ guest.domain }}        {{ guest.hostname }}"
     state: present
   delegate_to: "{{ guest.base_guest.hostname }}"
   connection: local
@@ -25,8 +24,8 @@
 - name: "add hostname {{ guest.hostname }} to /etc/hostname"
   lineinfile:
     dest: /etc/hostname
-    regexp: '^{{ guest.base_guest.hostname }}'
-    line: '{{ guest.hostname }}'
+    regexp: "^{{ guest.base_guest.hostname }}"
+    line: "{{ guest.hostname }}"
     state: present
   delegate_to: "{{ guest.base_guest.hostname }}"
 

@@ -1,10 +1,15 @@
 ---
 repos:
-  - repo: https://github.com/adrienverge/yamllint.git
-    sha: v1.15.0
+  - repo: https://github.com/prettier/prettier
+    rev: "1.17.0" # Use the sha or tag you want to point at
     hooks:
-      - id: yamllint
-  - repo: git@github.com:ansible/ansible-lint.git
-    sha: v4.1.0
-    hooks:
-      - id: ansible-lint
+      - id: prettier
+#  - repo: https://github.com/adrienverge/yamllint.git
+#    sha: v1.15.0
+#    hooks:
+#      - id: yamllint
+#  - repo: git@github.com:ansible/ansible-lint.git
+#    sha: v4.1.0
+#    hooks:
+#      - id: ansible-lint
+

@@ -1,16 +1,13 @@
-Role Name
-=========
+# Role Name
 
-A project to set up a KVM baremetal hypervisor, 
+A project to set up a KVM baremetal hypervisor,
 create a secure base guest for easy cloning and clone that image into other predefined vms.
 
-Requirements
-------------
+## Requirements
 
 Only supports Ubuntu 18.10 atm.
 
-Role Variables
---------------
+## Role Variables
 
 ```yaml
 kvm_guests:
@@ -21,10 +18,10 @@ kvm_guests:
     network_interface: br0
 ```
 
-Example Playbook
-----------------
+## Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+
 ```yaml
 - name: Setup KVM hosts.
   hosts: kvm-hosts
@@ -46,19 +43,15 @@ Including an example of how to use your role (for instance, with variables passe
     - role: ncrmro.kvm_host
 ```
 
-License
--------
+## License
 
 BSD
 
-Author Information
-------------------
+## Author Information
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
 
-
-Deployment
-----------
+## Deployment
 
 ```bash
 ansible-galaxy import  ncrmro kvm-host

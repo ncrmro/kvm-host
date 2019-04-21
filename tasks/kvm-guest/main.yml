@@ -1,5 +1,4 @@
 ---
-
 - import_tasks: gather_facts.yml
 
 - name: Create base KVM guests

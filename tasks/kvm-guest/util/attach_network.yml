@@ -5,7 +5,6 @@
     --type network
     --persistent
 
-
 - name: Attach attach-device network
   shell: >
     virsh attach-interface
