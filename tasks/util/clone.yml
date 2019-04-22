@@ -1,8 +1,8 @@
 ---
-- name: "create vm: {{ guest.name }}"
+- name: "create vm: {{ item }}"
   command: >
     virt-clone
-    --original {{ guest.base_guest.name }}
+    --original {{ guest.base_guest.name | default( kvm_base_guests_ubuntu18_04_server ) }}
     --name {{ guest.name }}
     --file {{ kvm_vm_folder_path }}/{{ guest.name }}.{{ guest.file_type | default("qcow2") }}
 
