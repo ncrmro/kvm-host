@@ -7,4 +7,4 @@
     --file {{ kvm_vm_folder_path }}/{{ guest.name }}.{{ guest.file_type | default("qcow2") }}
 
 - name: "set vm {{ item }} to autostart"
-  command: virsh autostart {{ guest.name }}
+  command: virsh autostart {{ name }}
