@@ -4,7 +4,7 @@
     virt-clone
     --original {{ guest.base_guest.name | default( kvm_base_guests_ubuntu18_04_server ) }}
     --name {{ item }}
-    --file {{ kvm_vm_folder_path }}/{{ item }}.{{ guest.file_type | default("qcow2") }}
+    --file {{ kvm_vm_folder_path }}/{{ item }}.qcow2 }}
 
 - name: "set vm {{ item }} to autostart"
   command: virsh autostart {{ name }}
