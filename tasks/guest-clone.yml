@@ -1,3 +1,6 @@
+- name: "Getting facts about guests {{ name }}"
+  include_tasks: util/facts.yml
+
 - name: "Cloning guests {{ name }} from base guests"
   include_tasks: util/clone.yml
 #- name: "If guest {{ name }} reach able by base_guest hostname {{ base_guest.domain }}, lets shut it down."
