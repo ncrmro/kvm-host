@@ -1,9 +1,18 @@
 ---
-- name: "Booting guest: {{ name }}..."
+- name: "Booting guest"
   virt:
     name: "{{ name }}"
     state: running
 
-- name: Wait for time to start
-  pause:
-    seconds: 15
+- set_fact:
+    wait_for: "{{ wait | default( true ) }}"
+    wait_for_port: "{{ port | default( 22 ) }}"
+    wait_for_hostname: "{{ wait_hostname | default( name ) }}"
+
+- name: Wait for ssh to come up
+  wait_for:
+    host: "{{ wait_for_hostname }}"
+    port: 22
+    delay: 5
+    timeout: 300
+  when: wait_for

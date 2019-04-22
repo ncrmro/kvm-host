@@ -1,8 +1,11 @@
-- name: "Getting facts about guests {{ name }}"
+- name: "Getting facts about guests"
   include_tasks: util/facts.yml
 
-- name: "Cloning guests {{ name }} from base guests"
+- name: Cloning from base guests
   include_tasks: util/clone.yml
+  vars:
+    inventory_hostname: "{{ item }}"
+  with_items: "{{ groups['kvm-clones'] }}"
 #- name: "If guest {{ name }} reach able by base_guest hostname {{ base_guest.domain }}, lets shut it down."
 #  command: ping -c1 "{{ base_guest.domain }}"
 #  register: ping_result

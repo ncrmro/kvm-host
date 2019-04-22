@@ -3,3 +3,5 @@ kvm_vm_folder_path: "/vms"
 search_domans: ".local"
 
 ubuntu18_iso: "/isos/ubuntu-18.04-live-server-amd64.iso"
+
+kvm_guest_autostart: false
