@@ -2,7 +2,7 @@
 - name: "create vm: {{ item }}"
   command: >
     virt-clone
-    --original {{ guest.base_guest.name | default( kvm_base_guests_ubuntu18_04_server ) }}
+    --original {{ kvm_base_guests_ubuntu18_04_server }}
     --name {{ item }}
     --file {{ kvm_vm_folder_path }}/{{ item }}.qcow2 }}
 
