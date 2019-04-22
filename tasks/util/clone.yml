@@ -1,10 +1,22 @@
 ---
-- name: "create vm: {{ item }}"
+- set_fact:
+    guest: "{{ hostvars[inventory_hostname] }}"
+
+- name: Guest info
+  debug:
+    msg: "{{ guest }}"
+
+- set_fact:
+    hostname: "{{ guest['inventory_hostname'] }}"
+    autostart: "{{ guest['kvm_guest_autostart'] }}"
+
+- name: "Cloning VM {{ guest }}"
   command: >
     virt-clone
-    --original {{ kvm_base_guests_ubuntu18_04_server }}
-    --name {{ item }}
-    --file {{ kvm_vm_folder_path }}/{{ item }}.qcow2 }}
+    --original {{ kvm_base_guests_ubuntu18_04_server | default( "ubuntu18_04_server" ) }}
+    --name {{ guest['inventory_hostname'] }}
+    --file {{ kvm_vm_folder_path }}/{{ hostname }}.qcow2
 
 - name: "set vm {{ item }} to autostart"
-  command: virsh autostart {{ name }}
+  command: virsh autostart {{ hostname }}
+  when: autostart
