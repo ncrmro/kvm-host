@@ -5,7 +5,11 @@
     packages:
       - pkg-config
       - python-pip
+      - python3-pip
+
+      # Needed for ansible libvirt packages
       - python3-lxml
+      - python3-libvirt
 
 - name: Install kvm and tools
   apt: name={{ packages }} state=present
