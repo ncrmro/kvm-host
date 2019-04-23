@@ -9,7 +9,8 @@
 
 ### Begin Hostname
 
-- set_fact:
+- name: Temporarly disabling host key checking to be able to access sibling hostname and new ip.
+  set_fact:
     ANSIBLE_HOST_KEY_CHECKING: False
 
 - name: "add guest domain {{ guest.hostname }} and hostname {{ guest.domain }} to /etc/hosts"
@@ -29,7 +30,8 @@
     state: present
   delegate_to: "{{ guest.base_guest.hostname }}"
 
-- set_fact:
+- name: renabling host key checking.
+  set_fact:
     ANSIBLE_HOST_KEY_CHECKING: True
 
 - name: Wait for async change hostname..
