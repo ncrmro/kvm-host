@@ -15,6 +15,9 @@ cache:
 
 lint:
   before_script:
+    # pre-commit needs git installed
+    - apk update and apk add git
+
     - python -V # Print out python version for debugging
     - pip install virtualenv pipenv
     - virtualenv venv
