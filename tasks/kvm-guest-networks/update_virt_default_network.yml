@@ -1,6 +1,4 @@
 ---
-# TODO make this create a new network instead of deleting
-# the old one to add .kvm search domain
 - name: Check current Networks
   virt_net:
     command: list_nets

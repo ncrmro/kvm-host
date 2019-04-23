@@ -1,15 +1,16 @@
 ---
-- name: add dnsmasq for host
+- name: Add local dnsmasq as a dns resolver.
   lineinfile:
-    dest: "{{ libvirt_qemu_resolv_conf_head }}"
+    dest: "{{ kvm_resolv_conf_head_file_path }}"
     regexp: "#DNS="
     line: "DNS=192.168.122.1"
   register: nameserver_result
+  notify: restart-resolved
 
-- name: add dnsmasq for host
+- name: Add upstream dns mask  resolver.
   lineinfile:
-    dest: "{{ libvirt_qemu_resolv_conf_head }}"
+    dest: "{{ kvm_resolv_conf_head_file_path }}"
     regexp: "#FallbackDNS="
-    line: "FallbackDNS=192.168.1.254"
+    line: "FallbackDNS=10.0.0.6"
   register: nameserver_result
   notify: restart-resolved
