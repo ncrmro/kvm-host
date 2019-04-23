@@ -1,12 +1,15 @@
 - include_tasks: shutdown.yml
 
-- set_fact:
+- name: Set snapshot facts.
+  set_fact:
     snapshot_name: "automated-snapshot_{{ snapshot_name | default( lookup('pipe','date +%Y-%m-%d-%H-%M-%S' ) )  }}"
+    snapshot_actively_needs: true
 
 - name: "Snapshot guest vm {{ name }} with snapshot name {{ snapshot_name }}"
   command: >
     virsh snapshot-create-as
     --domain {{ name }}
     --name {{ snapshot_name }}
+  when: snapshot_actively_needs
 
 - include_tasks: boot.yml

@@ -4,7 +4,8 @@
     name: "{{ name }}"
     state: running
 
-- set_fact:
+- name: Getting wait for variables.
+  set_fact:
     wait_for: "{{ wait | default( true ) }}"
     wait_for_port: "{{ port | default( 22 ) }}"
     wait_for_delay: "{{ delay | default( 5 ) }}"

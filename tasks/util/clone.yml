@@ -1,17 +1,21 @@
 ---
-- set_fact:
+- name: Getting current guest from inventory.
+  set_fact:
     guest: "{{ hostvars[inventory_hostname] }}"
 
 - name: Guest info
   debug:
     msg: "{{ guest }}"
 
-- set_fact:
+- name: Get facts about sibling and cloned guests.
+  set_fact:
     hostname: "{{ guest['inventory_hostname'] }}"
     autostart: "{{ guest['kvm_guest_autostart'] }}"
     state: "{{ guest['kvm_guest_state'] | default( stopped ) }}"
+    cloned_actively_needs: true
 
-- set_fact:
+- name: Get facts about sibling and cloned guests.
+  set_fact:
     original_vm_name: "{{ kvm_base_guests_ubuntu18_04_server | default( 'ubuntu18_04_server' ) }}"
     cloned_vm_name: "{{ guest['inventory_hostname'] }}"
     cloned_vm_os_disk: "{{ kvm_vm_folder_path }}/{{ hostname }}.qcow2"
@@ -22,6 +26,7 @@
     --original {{ original_vm_name }}
     --name {{ cloned_vm_name }}
     --file {{ cloned_vm_os_disk }}
+  when: cloned_actively_needs
 
 - name: "Set cloned VM to autostart"
   command: virsh autostart {{ cloned_vm_name }}
