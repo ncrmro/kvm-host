@@ -1,0 +1,13 @@
+---
+- name: Packages needed by ansible
+  apt: name={{ packages }} state=present
+  vars:
+    packages:
+      - python3-lxml
+      - python3-libvirt
+
+- name: Install kvm and tools
+  apt: name={{ packages }} state=present
+  vars:
+    packages:
+      - resolvconf
