@@ -34,7 +34,8 @@
 #  with_items: "{{ kvm_guests }}"
 
 # Example setting facts so that they will be persisted in the fact cache
-- set_fact:
+- name: Setting facts about kvm host.
+  set_fact:
     vms: "{{ vms }}"
     kvm_disks: "{{ disks }}"
 #    network_interfaces: "{{ network_interfaces }}"

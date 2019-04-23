@@ -5,6 +5,7 @@
   command: ping -c1 "{{ guest.base_guest.domain }}"
   register: ping_result
   ignore_errors: yes
+  when: true
 
 - name: "Ensure base_guest {{ guest.base_guest.name }} is shutdown before cloning guest { guest.name }}."
   import_tasks: util/shutdown.yml
