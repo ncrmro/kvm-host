@@ -1,10 +1,11 @@
 ---
-- name: "create disk: {{ kvm_vm_folder_path }}/{{ guest.name }}.{{ guest.file_type }}"
+- name: Creating disk for guest.
   command: >
     qemu-img create
     -f {{ guest.file_type }}
-    "{{ kvm_vm_folder_path}}/{{ guest.name }}.{{ guest.file_type }}"
+    "{{ kvm_vm_folder_path }}/{{ guest.name }}.{{ guest.file_type }}"
     "{{ guest.disk_size }}"
+  when: true
 
 - name: "Copy preseed preseed-ubuntu.cfg.j2"
   template:
@@ -30,6 +31,7 @@
     --os-type={{ guest.os_type }}
     --os-variant={{ guest.os_variant }}
     --noreboot
+  when: true
 
 - name: "Reboot: {{ guest.name }}"
   include_tasks: reboot.yml

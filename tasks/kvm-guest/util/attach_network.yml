@@ -1,14 +1,16 @@
 - name: Detach existing default network
-  shell: >
+  command: >
     virsh detach-interface
     --domain "{{ guest.key }}"
     --type network
     --persistent
+  when: true
 
 - name: Attach attach-device network
-  shell: >
+  command: >
     virsh attach-interface
     --domain "{{ guest.key }}"
     --type bridge
     --source "{{ guest.value.network_interface }}"
     --persistent
+  when: true
