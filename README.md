@@ -56,3 +56,7 @@ An optional section for the role authors to include contact information, or a we
 ```bash
 ansible-galaxy import  ncrmro kvm-host
 ```
+
+```bash
+virt-clone --original ubuntu18_04_server --name test --file /vms/test.qcow2
+```
