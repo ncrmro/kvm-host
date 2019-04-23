@@ -1,6 +1,6 @@
 ---
 - name: "Beginning Reboot, Shutdown: {{ name }}"
-  include_tasks: shutdown.yml
+  include_tasks: "{{ role_path }}/tasks/util/shutdown.yml"
 
 - name: "Starting: {{ name }}"
-  include_tasks: boot.yml
+  include_tasks: "{{ role_path }}/tasks/util/boot.yml"

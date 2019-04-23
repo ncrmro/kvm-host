@@ -12,10 +12,4 @@
     regexp: "#FallbackDNS="
     line: "FallbackDNS=192.168.1.254"
   register: nameserver_result
-
-- name: restart systemd-resolved
-  systemd:
-    state: restarted
-    daemon_reload: true
-    name: systemd-resolved
-  when: nameserver_result.changed
+  notify: restart-resolved

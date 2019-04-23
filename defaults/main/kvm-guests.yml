@@ -11,7 +11,7 @@ kvm_base_guests_ubuntu18_04_server:
   hostname: ubuntu18-04-server
   domain: ubuntu18-04-server.local
   initrd_inject: "--initrd-inject {{ kvm_vm_folder_path }}/preseed.cfg"
-  extra_args: '--extra-args="console-setup/ask_detect=false file=file:/preseed.cfg priority=critical quiet"'
+  extra_args: '--extra-args="console-setup/ask_detect=false file=file:/preseed.cfg priority=critical quiet"' # yamllint disable-line
 
 kvm_base_guests:
   - "{{ kvm_base_guests_ubuntu18_04_server }}"

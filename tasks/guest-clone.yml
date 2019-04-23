@@ -1,3 +1,4 @@
+---
 - name: "Getting facts about guests"
   include_tasks: util/facts.yml
 
@@ -6,30 +7,30 @@
   vars:
     inventory_hostname: "{{ item }}"
   with_items: "{{ groups['kvm-clones'] }}"
-#- name: "If guest {{ name }} reach able by base_guest hostname {{ base_guest.domain }}, lets shut it down."
+# - name: "If guest {{ name }} reach able by base_guest hostname {{ base_guest.domain }}, lets shut it down."
 #  command: ping -c1 "{{ base_guest.domain }}"
 #  register: ping_result
 #  ignore_errors: yes
 #
-#- name: "Ensure base_guest {{ base_guest.name }} is shutdown before cloning guest { name }}."
+# - name: "Ensure base_guest {{ base_guest.name }} is shutdown before cloning guest { name }}."
 #  import_tasks: util/shutdown.yml
 #  vars:
 #    name: "{{ base_guest.name }}"
 #
-#- import_tasks: util/boot.yml
+# - import_tasks: "{{ role_path }}/tasks/util/boot.yml"
 #  vars:
 #    name: "{{ name }}"
 #
-#- name: "Update cloned guests: {{ name }} hostname"
+# - name: "Update cloned guests: {{ name }} hostname"
 #  include_tasks: util/changehostname.yml
 #
-##- name: Resize disk
+## - name: Resize disk
 ##  include_tasks: util/resize_disk.yml
 ##  vars:
 ##    #original_size:
 ##    expanded_size: 40GB
 #
-#- import_tasks: util/snapshot.yml
+# - import_tasks: util/snapshot.yml
 #  vars:
 #    name: "{{ name }}"
 #    snapshot_name: "initial-snapshot"

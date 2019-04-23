@@ -33,7 +33,7 @@
   when: autostart
 
 - name: Wait for cloned VM to come up under old hostname.
-  include_tasks: boot.yml
+  include_tasks: "{{ role_path }}/tasks/util/boot.yml"
   vars:
     name: "{{ cloned_vm_name }}"
     wait_for: true

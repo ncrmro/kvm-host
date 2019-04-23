@@ -1,4 +1,4 @@
-- include_tasks: util/snapshot.yml
+- include_tasks: "{{ role_path }}/tasks/util/snapshot.yml"
   vars:
     name: "{{ item.name }}"
   with_items: "{{ kvm_guests }}"

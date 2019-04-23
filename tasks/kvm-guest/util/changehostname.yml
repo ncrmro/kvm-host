@@ -11,7 +11,7 @@
 
 - name: Temporarly disabling host key checking to be able to access sibling hostname and new ip.
   set_fact:
-    ANSIBLE_HOST_KEY_CHECKING: False
+    ANSIBLE_HOST_KEY_CHECKING: false
 
 - name: "add guest domain {{ guest.hostname }} and hostname {{ guest.domain }} to /etc/hosts"
   lineinfile:
@@ -32,7 +32,7 @@
 
 - name: renabling host key checking.
   set_fact:
-    ANSIBLE_HOST_KEY_CHECKING: True
+    ANSIBLE_HOST_KEY_CHECKING: true
 
 - name: Wait for async change hostname..
   pause: seconds=45
@@ -40,7 +40,7 @@
 
 ### End Key Hostname
 
-- import_tasks: reboot.yml
+- import_tasks: "{{ role_path }}/tasks/util/reboot.yml"
   vars:
     name: "{{ guest.name }}"
 

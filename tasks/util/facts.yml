@@ -1,3 +1,4 @@
+---
 # Check if guests exists and are reachable
 
 - name: List VMs

@@ -1,4 +1,5 @@
-- include_tasks: shutdown.yml
+---
+- include_tasks: "{{ role_path }}/tasks/util/shutdown.yml"
 
 - name: Set snapshot facts.
   set_fact:
@@ -12,4 +13,4 @@
     --name {{ snapshot_name }}
   when: snapshot_actively_needs
 
-- include_tasks: boot.yml
+- include_tasks: "{{ role_path }}/tasks/util/boot.yml"

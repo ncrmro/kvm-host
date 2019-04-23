@@ -34,7 +34,7 @@
   when: true
 
 - name: "Reboot: {{ guest.name }}"
-  include_tasks: reboot.yml
+  include_tasks: "{{ role_path }}/tasks/util/reboot.yml"
   vars:
     name: "{{ guest.name }}"
 
