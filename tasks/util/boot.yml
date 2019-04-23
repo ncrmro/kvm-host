@@ -7,12 +7,14 @@
 - set_fact:
     wait_for: "{{ wait | default( true ) }}"
     wait_for_port: "{{ port | default( 22 ) }}"
-    wait_for_hostname: "{{ wait_hostname | default( name ) }}"
+    wait_for_delay: "{{ delay | default( 5 ) }}"
+    wait_for_hostname: "{{ hostname | default( name ) }}"
+    wait_for_timeout: "{{ timeout | default( 30 ) }}"
 
 - name: Wait for ssh to come up
   wait_for:
     host: "{{ wait_for_hostname }}"
-    port: 22
-    delay: 5
-    timeout: 300
+    port: "{{ wait_for_port }}"
+    delay: "{{ wait_for_delay }}"
+    timeout: "{{ wait_for_timeout }}"
   when: wait_for
