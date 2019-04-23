@@ -4,6 +4,9 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   PIPENV_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pipenv"
 
+  # Ignore pipenv virtualenv warning
+  PIPENV_VERBOSITY: -1
+
 cache:
   paths:
     - .cache/pip
