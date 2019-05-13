@@ -20,6 +20,13 @@
       - libvirt-clients
       - bridge-utils
 
+- name: Disco Packages
+  apt: name={{ packages }} state=present
+  vars:
+    packages:
+      - virtinst
+  when: "ansible_distribution_release == 'disco'"
+
 - name: Creates VM directory
   file:
     path: "{{ kvm_vm_folder_path }}"
