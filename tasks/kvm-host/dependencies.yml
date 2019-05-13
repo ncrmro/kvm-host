@@ -13,8 +13,6 @@
 
 - name: Install kvm and tools
   apt: name={{ packages }} state=present
-  notify:
-    - Start Nginx
   vars:
     packages:
       - qemu-kvm
