@@ -1,4 +1,4 @@
-image: python:3.7.3-alpine3.9
+image: python:3.7.3 #-alpine3.9
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -13,13 +13,10 @@ cache:
     - .cache/pipenv
     - venv/
 
-include:
-  - local: "kvm-host/.gitlab-ci.yml"
-
-lint:
+test:
   before_script:
     # pre-commit needs git installed
-    - apk update and apk add git
+    #- apk update and apk add git openssh-server
 
     - python -V # Print out python version for debugging
     - pip install virtualenv pipenv
@@ -30,5 +27,5 @@ lint:
     - pipenv install --dev --deploy
 
   script:
-    - pre-commit install
-    - pre-commit run -a
+    - echo test!
+# docker run -v /home/docker/kvm-host:/app -it python:3.7.3-alpine3.9 sh
